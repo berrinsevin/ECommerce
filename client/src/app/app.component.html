@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg bg-dark fixed-top">
+
+  <div class="container-fluid ms-5" style="height: 75px;">
+
+      <img src="/assets/images/logo-nav@2x.png" alt="Angular 13" style="max-height: 70px; max-width: 175px; margin-left: 54px;">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="buttonBorder" aria-current="page" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Home
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="buttonBorder" aria-current="page" routerLink="products" routerLinkActive="active">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Products</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="buttonBorder" aria-current="page" routerLink="test-errors" routerLinkActive="active">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Erros</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="buttonBorder" aria-current="page" routerLink="admin" routerLinkActive="active"
+            *ngIf="jwtService.isAuthenticated">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Admin Panel</a>
+        </li>
+
+      </ul>
+
+      <div class="d-flex align-items-center me-5">
+        <a class="position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="cursor: pointer;">
+          <i class="fa fa-shopping-cart fa-2x text-light me-4 mt-1"></i>
+          <div class="cart-no">5</div>
+        </a>
+        <a class="btn btn-sm btn-outline-success" style="cursor: pointer;" routerLink="login"
+          *ngIf="!jwtService.isAuthenticated">Login</a>
+        <a class="btn btn-sm btn-outline-danger ms-3" style="cursor: pointer;" routerLink="register"
+          *ngIf="!jwtService.isAuthenticated">Register</a>
+        <a class="btn btn-sm btn-outline-danger ms-3" style="cursor: pointer;" (click)="signOut()"
+          *ngIf="jwtService.isAuthenticated">Logout</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<!-- ngx spinner -->
+<ngx-spinner color="#a0cadb" name="spinnerSquare" type="ball-grid-pulse"></ngx-spinner>
+<ngx-spinner color="#a0cadb" name="spinnerCircle" type="ball-spin-clockwise-fade-rotating"></ngx-spinner>
+<!-- ngx spinner -->
+
+<div class="container appRouterOutlet">
+  <router-outlet></router-outlet>
+</div>
+
+<app-baskets></app-baskets>
